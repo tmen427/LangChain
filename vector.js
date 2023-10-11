@@ -18,7 +18,7 @@ import cors from "cors";
 const StoredVector= async(search) => {
 //load the document 
 const loader = new CSVLoader("./speech.txt");
-//const loader = new CSVLoader("./half.csv");
+//const loader = new CSVLoader("./salary_data.csv");
 const docs = await loader.load();
 
 
@@ -36,7 +36,7 @@ let llm = new OpenAI({
 //the batchSize is immportant, if the batchsize is smaller then size of the document the you will get errors
 const embeddings = new OpenAIEmbeddings({
   openAIApiKey: process.env.OPENAI_API_KEY1, // In Node.js defaults to process.env.OPENAI_API_KEY
-  batchSize: 512, // Default value if omitted is 512. Max is 2048
+  batchSize: 2000, // Default value if omitted is 512. Max is 2048
 });
 
 //stored as a vector file
@@ -51,8 +51,6 @@ const embeddings = new OpenAIEmbeddings({
 });
     return response; 
  }
-
-
 
 
 
